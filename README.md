@@ -2,17 +2,19 @@
 
 Turn one good run into a team-ready SOP.
 
-OrgMemory Edge is a consent-first, local-first desktop application for capturing a real workflow, producing a reviewable SOP draft, and saving the recipe for repeated runs. Support, finance, operations, and QA teams can document work without requiring an OrgMemory server or any proprietary service.
+OrgMemory Edge is a consent-first, local-first desktop application for capturing a real workflow, producing a reviewable SOP draft, and saving the recipe for repeated runs. It targets enterprise pilots in support, finance operations, operations, and QA without requiring an OrgMemory server or proprietary runtime.
 
 ## v0.1 workflow
 
 1. A pilot explicitly starts a recording session and completes one clean pass in their normal tools.
-2. Edge assembles screen context, application names, timeline moments, and optional transcript evidence.
+2. Edge assembles screen context, application names, timeline moments, and separately consented transcript evidence inside that named session.
 3. The pilot asks for a step-by-step SOP with systems, decisions, exceptions, and evidence links.
-4. A teammate reviews every inferred or missing step.
+4. A teammate reviews every inferred or missing step; export remains blocked until verification is complete.
 5. The approved recipe can be saved as a repeatable pipe.
 
 Admins can see device health, agent version, consent state, and policy assignment. They do not receive raw screen, audio, or SOP evidence unless the pilot explicitly publishes it.
+
+The repository currently contains a verified seeded demonstration of this contract, not live desktop capture. See [`docs/specs/enterprise-pilot.md`](docs/specs/enterprise-pilot.md) for the pilot definition and readiness gates.
 
 ## Standalone by design
 

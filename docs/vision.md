@@ -33,3 +33,9 @@ Every SOP must identify systems used, ordered steps, decisions, exceptions, evid
 ## v0.1 target
 
 Windows desktop, explicit capture, application/window timeline, optional audio track, human-reviewed SOP generation, local JSON/Markdown export, and one reusable pipe recipe.
+
+## Enterprise pilot
+
+The first enterprise proof is one named, repeatable workflow completed by 5–10 participants over 10 business days. A named capture session is the privacy boundary; a time-only search must never mix unrelated work into an SOP. The pilot succeeds when a teammate who did not author the SOP can complete the workflow from the reviewed document, with traceable evidence and no permission or consent incident.
+
+See `docs/specs/enterprise-pilot.md` for the scorecard and go/no-go gates.

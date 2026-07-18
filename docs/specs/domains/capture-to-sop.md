@@ -2,7 +2,7 @@
 
 ## Scenario: pilot records one clean pass
 
-Given capture is paused, when the pilot explicitly starts a session, then the UI must show a persistent recording state and offer pause. Evidence is stored locally and can be selected or excluded before drafting.
+Given capture is paused, when the pilot reviews the active sources and explicitly consents to a named session, then the UI must show a persistent recording state and offer pause. Audio remains off until separately consented. Evidence is stored locally and can be selected or excluded before drafting.
 
 ## Scenario: generate a useful SOP
 
@@ -18,7 +18,7 @@ No unselected evidence may appear in the draft.
 
 ## Scenario: review and repeat
 
-The pilot and teammate can correct guessed or missing steps before export. An approved configuration can become a pipe that repeats the same summary after later runs.
+The pilot and an identified teammate can mark guessed or missing steps before export. Export is blocked until every verification flag is resolved. An approved configuration can become a pipe that repeats the same named-session summary after later runs; it never overwrites an approved SOP automatically.
 
 ## Scenario: admin checks fleet health
 

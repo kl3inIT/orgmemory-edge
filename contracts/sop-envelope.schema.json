@@ -1,17 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://orgmemory.dev/contracts/sop-envelope.schema.json",
-  "title": "OrgMemory Edge SOP envelope",
+  "title": "OrgMemory Edge reviewed SOP envelope",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "generatedAt", "approvedByHuman", "draft"],
+  "required": ["schemaVersion", "generatedAt", "approvedByHuman", "review", "draft"],
   "properties": {
-    "schemaVersion": { "const": "1.0" },
+    "schemaVersion": { "const": "1.1" },
     "generatedAt": { "type": "string", "format": "date-time" },
-    "approvedByHuman": { "type": "boolean" },
+    "approvedByHuman": { "const": true },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewerLabel", "reviewedAt"],
+      "properties": {
+        "status": { "const": "approved" },
+        "reviewerLabel": { "type": "string", "minLength": 1 },
+        "reviewedAt": { "type": "string", "format": "date-time" }
+      }
+    },
     "draft": {
       "type": "object",
-      "required": ["title", "objective", "systemsUsed", "sections", "decisions", "exceptions", "verificationFlags", "evidenceIds"],
+      "additionalProperties": false,
+      "required": ["title", "objective", "systemsUsed", "sections", "decisions", "exceptions", "verificationFlags", "evidenceLinks", "recipe"],
       "properties": {
         "title": { "type": "string", "minLength": 1 },
         "objective": { "type": "string", "minLength": 1 },
@@ -21,17 +32,59 @@
           "minItems": 1,
           "items": {
             "type": "object",
+            "additionalProperties": false,
             "required": ["title", "items"],
             "properties": {
-              "title": { "type": "string" },
+              "title": { "type": "string", "minLength": 1 },
               "items": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
             }
           }
         },
         "decisions": { "type": "array", "items": { "type": "string" } },
         "exceptions": { "type": "array", "items": { "type": "string" } },
-        "verificationFlags": { "type": "array", "items": { "type": "string" } },
-        "evidenceIds": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true }
+        "verificationFlags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "text", "status"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "text": { "type": "string", "minLength": 1 },
+              "status": { "const": "verified" }
+            }
+          }
+        },
+        "evidenceLinks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["evidenceId", "occurredAt", "application", "label"],
+            "properties": {
+              "evidenceId": { "type": "string", "minLength": 1 },
+              "occurredAt": { "type": "string", "format": "date-time" },
+              "application": { "type": "string", "minLength": 1 },
+              "label": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "recipe": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["windowMinutes", "instruction", "sources"],
+          "properties": {
+            "windowMinutes": { "type": "integer", "minimum": 1, "maximum": 60 },
+            "instruction": { "type": "string", "minLength": 1 },
+            "sources": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "enum": ["screen-text", "transcript", "app-names", "timeline-moments"] }
+            }
+          }
+        }
       }
     }
   }

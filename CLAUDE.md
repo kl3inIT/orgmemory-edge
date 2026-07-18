@@ -5,6 +5,7 @@ Read these sources before changing behavior:
 - Product intent: `docs/vision.md`
 - Current built facts: `ARCHITECTURE.md`
 - Domain contract: `docs/specs/domains/capture-to-sop.md`
+- Enterprise pilot contract: `docs/specs/enterprise-pilot.md`
 - Mirrored acceptance tests: `docs/tests/domains/capture-to-sop.md`
 - Active increment: `docs/increments/active/2026-07-18-build-week-foundation/`
 - Decisions: `docs/decisions/`
