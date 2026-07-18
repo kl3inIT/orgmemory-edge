@@ -7,6 +7,6 @@
 - [x] Block export and pipe save until the review gate passes
 - [x] Frontend and Rust gates green
 - [x] Browser runtime flow verified
-- [ ] Public commit and CI green
+- [x] Public commit and CI green
 
 Next increment: live Windows app/window and UI Automation capture backed by a durable local evidence store.
