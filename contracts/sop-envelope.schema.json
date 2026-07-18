@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://orgmemory.dev/contracts/sop-envelope.schema.json",
+  "title": "OrgMemory Edge SOP envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "generatedAt", "approvedByHuman", "draft"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "approvedByHuman": { "type": "boolean" },
+    "draft": {
+      "type": "object",
+      "required": ["title", "objective", "systemsUsed", "sections", "decisions", "exceptions", "verificationFlags", "evidenceIds"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "objective": { "type": "string", "minLength": 1 },
+        "systemsUsed": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "sections": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["title", "items"],
+            "properties": {
+              "title": { "type": "string" },
+              "items": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+            }
+          }
+        },
+        "decisions": { "type": "array", "items": { "type": "string" } },
+        "exceptions": { "type": "array", "items": { "type": "string" } },
+        "verificationFlags": { "type": "array", "items": { "type": "string" } },
+        "evidenceIds": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true }
+      }
+    }
+  }
+}
