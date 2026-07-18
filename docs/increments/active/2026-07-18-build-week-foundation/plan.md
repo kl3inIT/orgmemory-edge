@@ -7,6 +7,6 @@
 - [x] Public contract and thin-map harness
 - [x] Frontend and Rust gates green
 - [x] Real browser runtime verification
-- [ ] Public GitHub repository published
+- [x] Public GitHub repository published
 
 Next increment: replace seeded evidence with Windows capture and accessibility adapters behind the same interface.
